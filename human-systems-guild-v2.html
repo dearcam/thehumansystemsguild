@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Human Systems Guild - Coming 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-warm: #fffbf0;
+            --bg-cool: #f8fafc;
+            --border: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 8px 32px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .container-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(165deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 7rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        header .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            font-weight: 400;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        header .coming-soon {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-warm {
+            background: var(--bg-warm);
+        }
+
+        .section-cool {
+            background: var(--bg-cool);
+        }
+
+        .section-bordered {
+            border-top: 1px solid var(--border);
+        }
+
+        /* QUOTE STYLES */
+        .quote-hero {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin: 3rem 0;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        /* SYMPTOM GRID - NEW DESIGN */
+        .symptom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .symptom-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .symptom-card h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .symptom-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CALLOUT BOXES */
+        .callout-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: white;
+            padding: 2.5rem 3rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.6;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .callout-secondary {
+            background: white;
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 2.5rem 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* BENEFIT LISTS */
+        .benefit-list {
+            list-style: none;
+            margin: 2.5rem 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .benefit-list li {
+            padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .benefit-list li:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* TRIED SECTION */
+        .tried-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tried-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--text-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tried-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .tried-card p {
+            color: var(--text-light);
+        }
+
+        /* QUALIFICATION BOX */
+        .qualification-box {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 3.5rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .qualification-box h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .qualification-box p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .qualification-box ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .qualification-box li {
+            padding: 1rem 0 1rem 2.5rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .qualification-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* FRAMEWORK SECTION */
+        .framework-box {
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .framework-box .big-idea {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .framework-box p {
+            font-size: 1.15rem;
+            color: var(--text);
+        }
+
+        /* PLOT CARDS */
+        .plot-grid {
+            display: grid;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .plot-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .plot-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .plot-card h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .plot-card .skill-intro {
+            font-weight: 600;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .plot-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .plot-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .plot-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .plot-card strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .plot-card .insight {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: var(--bg-warm);
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text);
+            border-left: 3px solid var(--accent);
+        }
+
+        /* BELIEFS */
+        .beliefs-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .belief-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border);
+        }
+
+        .belief-number {
+            width: 3rem;
+            height: 3rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .belief-content h4 {
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .belief-content p {
+            color: var(--text-light);
+        }
+
+        /* DIFFERENTIATORS */
+        .diff-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .diff-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .diff-card strong {
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            padding-left: 5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--bg-cool);
+            box-shadow: 0 0 0 4px var(--accent-hover);
+        }
+
+        .timeline-item h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        /* OFFER SECTION */
+        .offer-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .offer-header .tagline {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .features-list {
+            display: grid;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card strong {
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+        }
+
+        /* FOUNDING OFFER */
+        .founding-offer {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: white;
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .founding-offer h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .founding-offer p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .founding-benefits {
+            list-style: none;
+            margin: 2rem 0;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .founding-benefits li {
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .founding-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* PRICING */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 3px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-card h4 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .pricing-card .price-wrap {
+            margin: 2rem 0;
+        }
+
+        .pricing-card .regular-price {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .founding-price {
+            color: var(--accent);
+            font-size: 2.2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .pricing-card .description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 1.5rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(165deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 2rem auto;
+            max-width: 750px;
+            line-height: 1.6;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 1.5rem auto;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1.5rem 3.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 2.5rem 0 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* GUARANTEE */
+        .guarantee-box {
+            background: white;
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 4rem auto;
+        }
+
+        .guarantee-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .guarantee-box p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            header h1 {
+                font-size: 2.8rem;
+            }
+
+            header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .container, .container-wide {
+                padding: 0 1.25rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .quote-hero {
+                font-size: 1.8rem;
+            }
+
+            .symptom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .callout-primary,
+            .callout-secondary,
+            .qualification-box,
+            .founding-offer {
+                padding: 2rem;
+            }
+
+            .timeline::before {
+                left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 3rem;
+            }
+
+            .timeline-item::before {
+                left: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>The Human Systems Guild</h1>
+            <p class="subtitle">A Membership for Leaders Who Want Healthy Teams, Clear Culture, and More Human Organizations</p>
+            <div class="coming-soon">Coming 2026</div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <p class="quote-hero">"If I want it done right, I have to do it myself."</p>
+            
+            <p class="intro-text">How many of these common leadership struggles do you face regularly?</p>
+
+            <div class="symptom-grid">
+                <div class="symptom-card">
+                    <h4>Decision Fatigue</h4>
+                    <p>You're involved in too many decisions because people either don't know how to decide or don't feel empowered to do so.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Chronic Interpersonal Friction</h4>
+                    <p>The same conflicts resurface with different faces, eating time and emotional energy.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>High Turnover or Quiet Quitting</h4>
+                    <p>People leave (or check out) not because of the work itself, but because of unclear expectations, poor communication, or lack of trust.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Meeting Fatigue Without Progress</h4>
+                    <p>Meetings feel long, unproductive, or like everyone's talking past each other.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Triangulation and Gossip</h4>
+                    <p>People complain to you about each other instead of addressing issues directly.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Overfunctioning</h4>
+                    <p>You pick up slack, redo work, or solve problems that should belong to your team because it feels faster or safer than delegating.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Unclear Roles and Responsibilities</h4>
+                    <p>People aren't sure who owns what, leading to dropped balls or duplicated effort.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Inconsistent Accountability</h4>
+                    <p>Standards feel arbitrary, consequences are unclear, and follow-through is spotty.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Culture That Feels Fragile</h4>
+                    <p>One bad hire, one departure, or one conflict can destabilize the whole team.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Lack of Strategic Time</h4>
+                    <p>You're constantly firefighting instead of thinking ahead.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Emotional Exhaustion</h4>
+                    <p>You feel responsible for everyone's wellbeing, performance, and morale—and it's draining.</p>
+                </div>
+                <div class="symptom-card">
+                    <h4>Loneliness at the Top</h4>
+                    <p>No one seems to understand the weight you carry or the complexity you navigate.</p>
+                </div>
+            </div>
+
+            <div class="callout-primary">
+                These common side-effects of leading an organization are not necessary for your team to be wildly successful. You can have it another way.
+            </div>
+        </div>
+    </section>
+
+    <section class="section-warm">
+        <div class="container">
+            <h2>You Can Have It Another Way</h2>
+            
+            <p class="intro-text">What if your people were equipped to:</p>
+
+            <ul class="benefit-list">
+                <li>Make decisions aligned with organizational priorities without waiting for your approval</li>
+                <li>Take ownership of the mission and their role in advancing it</li>
+                <li>Proactively contribute to goals instead of needing constant direction</li>
+                <li>Develop their own leadership capacity and use it to lift others up</li>
+                <li>Address conflict directly instead of avoiding it or dumping it on you</li>
+                <li>See how their work connects to the bigger picture and act accordingly</li>
+                <li>Hold each other accountable with maturity, not blame or drama</li>
+                <li>Meet change with resilience instead of resistance or panic</li>
+                <li>Bring you solutions and context, not just problems</li>
+            </ul>
+
+            <div class="callout-secondary">
+                Imagine leading the organization you actually envision—and living the life you crave.
+            </div>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <h2>You've Probably Done a Lot of Things Right</h2>
+            
+            <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">You care deeply about your work. You have a proven track record. You've created something meaningful.</p>
+
+            <p style="font-style: italic; font-size: 1.3rem; margin: 2.5rem 0; text-align: center; color: var(--text-light);">But what got you here won't get you there.</p>
+
+            <p style="font-size: 1.1rem;">"There"—that place where your team runs smoothly without you micromanaging every detail. Where you have time to think strategically. Where conflicts get resolved without your intervention. Where people step up with ownership and initiative.</p>
+        </div>
+    </section>
+
+    <section class="section-cool">
+        <div class="container">
+            <h2>You Tried So Many Things</h2>
+
+            <div class="tried-grid">
+                <div class="tried-card">
+                    <h4>You tried team bonding.</h4>
+                    <p>You hosted pizza parties, escape rooms, offsites—all in the hopes that if people liked each other more, they'd work together better. But chemistry without clarity doesn't change anything.</p>
+                </div>
+
+                <div class="tried-card">
+                    <h4>You tried leadership inspiration.</h4>
+                    <p>Podcasts, TED talks, YouTube lessons, viral "10 habits of great leaders" threads. They're energizing in the moment—but impossible to apply in the heat of real conflict.</p>
+                </div>
+
+                <div class="tried-card">
+                    <h4>You tried copying what big companies do.</h4>
+                    <p>OKRs, performance reviews, culture decks, engagement surveys, leadership slogans. But small organizations have fundamentally different needs.</p>
+                </div>
+
+                <div class="tried-card">
+                    <h4>You tried one-off workshops.</h4>
+                    <p>A facilitator comes in, and everyone feels hopeful for a week... and then the old patterns return because no one is supporting the implementation and sustainable results.</p>
+                </div>
+
+                <div class="tried-card">
+                    <h4>You tried stepping in and handling things yourself.</h4>
+                    <p>Because it felt quicker in the moment. But every time you fix someone else's conflict, the system becomes just a little more dependent on you.</p>
+                </div>
+
+                <div class="tried-card">
+                    <h4>You may have even tried hiring part-time HR or a consultant.</h4>
+                    <p>But HR isn't actually about your people's thriving—it's there to protect them. And a consultant without ongoing access can't reshape the relational system.</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 3rem; font-weight: 600; font-size: 1.15rem;">And so, despite all your effort:</p>
+
+            <ul style="margin: 1.5rem 0 2rem 2rem; color: var(--text-light); font-size: 1.05rem;">
+                <li>Communication issues persist</li>
+                <li>Interpersonal tensions keep resurfacing</li>
+                <li>People avoid accountability</li>
+                <li>Turnover remains too high</li>
+                <li>You stay stuck in the weeds</li>
+                <li>The culture feels fragile or inconsistent</li>
+                <li>The same problems repeat with different faces</li>
+            </ul>
+
+            <p style="font-style: italic; margin: 2rem 0; font-size: 1.1rem;">Not because you didn't try hard enough—oh, no, you're the KING/QUEEN of working hard.</p>
+
+            <p style="font-weight: 700; font-size: 1.4rem; color: var(--primary); margin-top: 2rem;">Hard work isn't enough when you're doing it alone.</p>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <div class="qualification-box">
+                <h3>Is This You?</h3>
+                <p>The Human Systems Guild is specifically designed for:</p>
+                <ul>
+                    <li>Solopreneurs, small business owners, and nonprofit leaders who care deeply about people and purpose</li>
+                    <li>Growing teams (3-20 people) that need structure, clarity, and sustainable culture</li>
+                    <li>Leaders who know platitudes won't fix structural pain—they want real human-systems tools</li>
+                    <li>People who want support, community, and steady growth—not hype, one-offs, or burnout</li>
+                </ul>
+                <p style="margin-top: 2rem; font-style: italic; font-size: 1.1rem;">If you're leading a team of passionate humans and you're tired of feeling like the system depends entirely on you to function, keep reading.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-warm">
+        <div class="container">
+            <h2>A Better Way: The Human Systems Approach</h2>
+
+            <div class="framework-box">
+                <p class="big-idea">At the heart of our work is this simple but profound idea:</p>
+                <p style="margin-top: 1.5rem;">Organizations are living systems. Their effectiveness depends on relationships, structure, culture, and living processes that bring out the best in people.</p>
+            </div>
+
+            <p style="font-size: 1.1rem; margin: 2rem 0;">As a leader, it's your job to cultivate, grow, and unleash their excellence. But you can't do that alone.</p>
+
+            <p style="margin-top: 2rem; font-weight: 600; font-size: 1.15rem;">You need:</p>
+
+            <ul style="margin: 1.5rem 0 2rem 2rem; font-size: 1.05rem;">
+                <li style="margin-bottom: 0.75rem;">A system that supports both the humans and the organization</li>
+                <li style="margin-bottom: 0.75rem;">Leadership capacity across your entire team, not just at the top</li>
+                <li style="margin-bottom: 0.75rem;">Structures that make clarity, accountability, and psychological safety the default</li>
+                <li style="margin-bottom: 0.75rem;">Practices that turn conflict into growth, feedback into fuel, and culture into competitive advantage</li>
+            </ul>
+
+            <p style="font-style: italic; margin: 2.5rem 0; text-align: center; font-size: 1.2rem; color: var(--text-light);">No one's in a better position to do this than you.</p>
+
+            <h3 style="margin-top: 4rem;">What Is a "Human System"?</h3>
+
+            <p style="margin-bottom: 1.5rem;">Humans are relational creatures. We need meaning, rest, laughter, belonging, autonomy, imagination—and yes, sometimes we do brilliant work.</p>
+
+            <p style="margin-bottom: 1.5rem;">Organizations, meanwhile, need consistency, coordination, reliability, and results.</p>
+
+            <p style="font-style: italic; margin: 2rem 0; color: var(--text-light);">No amount of personal determination can force these things into being.</p>
+
+            <p style="margin-bottom: 1.5rem;">Both the human beings and the organization are living systems with their own needs that require tending from everyone.</p>
+
+            <p style="font-weight: 600; margin-top: 2.5rem; font-size: 1.1rem;">From this worldview emerges our Human Systems Model that outlines fertile "plots" leaders must tend in order for their teams to thrive.</p>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <h2>Three Things Every Organization Needs</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 4rem; font-size: 1.2rem;">(That YOU are responsible for creating)</p>
+
+            <div class="plot-grid">
+                <div class="plot-card">
+                    <h4>Plot 1: Leaders Who Are Good for People</h4>
+                    <p>Leadership is a teachable set of relational behaviors that create stability and clarity.</p>
+                    <p class="skill-intro">Great People Leaders master three skills:</p>
+                    <ul>
+                        <li><strong>Connection</strong>—that's creating psychological safety, circulating presence, and dispersing trust</li>
+                        <li><strong>Clarity</strong>—setting expectations, comprehensible roles, sound agreements, meaningful feedback</li>
+                        <li><strong>Compassion</strong>—holding accountability with empathy; being aware of context in peoples' lives</li>
+                    </ul>
+                    <div class="insight">When leaders behave consistently in these ways, human anxiety decreases, communication improves, and performance becomes possible.</div>
+                </div>
+
+                <div class="plot-card">
+                    <h4>Plot 2: Conscious, Brave Culture</h4>
+                    <p>Culture is what an organization does repeatedly.</p>
+                    <p style="margin-top: 1.5rem;">Unintentional culture can easily tend toward toxic traits like blame, avoidance, inequity, unclear norms, siloed behavior, and conflict avoidance.</p>
+                    <p style="margin-top: 1.5rem;">Intentional culture is built through explicit agreements, clear meeting rhythms, decision-making structures, hiring and exit rituals, shared behavioral expectations, and meaning-making conversations.</p>
+                    <div class="insight">Culture becomes a set of observable behaviors supported by systems.</div>
+                </div>
+
+                <div class="plot-card">
+                    <h4>Plot 3: Teams Who Care—and Tell the Truth</h4>
+                    <p>Teams are relational organisms. Their health is measured by how well they balance:</p>
+                    <ul style="margin-top: 1.5rem;">
+                        <li><strong>Care</strong>—a combination of trust, inclusion, and belonging</li>
+                        <li><strong>Courage</strong>—rigorous truth-telling and productive conflict</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem;">Teams with both care and courage can surface issues before they fester, resolve conflict early, avoid triangulation, maintain role clarity, and stay aligned through growth and uncertainty.</p>
+                    <div class="insight">Psychological safety is not the absence of conflict; it's the presence of honest, skillful, unrepressed communication.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-cool">
+        <div class="container">
+            <h2>Five Core Beliefs That Make Our Method Work</h2>
+
+            <div class="beliefs-grid">
+                <div class="belief-card">
+                    <div class="belief-number">1</div>
+                    <div class="belief-content">
+                        <h4>Human Needs Are Design Constraints</h4>
+                        <p>Human needs like belonging, safety, autonomy, growth, purpose, and connection can't be accidents; they have to be the intentional outcome of your organization's processes. Organizations that ignore these needs burn people out. Organizations that design around them flourish.</p>
+                    </div>
+                </div>
+
+                <div class="belief-card">
+                    <div class="belief-number">2</div>
+                    <div class="belief-content">
+                        <h4>Relational Complexity Scales Faster Than Headcount</h4>
+                        <p>Scaling from 8 to 20 people exponentially increases the relational complexity in a system. Most leaders are blindsided by this when they should be leveraging it to their advantage.</p>
+                    </div>
+                </div>
+
+                <div class="belief-card">
+                    <div class="belief-number">3</div>
+                    <div class="belief-content">
+                        <h4>Behavior > Ideology</h4>
+                        <p>Values matter, but behaviors drive outcomes. We teach leaders how to practice their values through observable actions.</p>
+                    </div>
+                </div>
+
+                <div class="belief-card">
+                    <div class="belief-number">4</div>
+                    <div class="belief-content">
+                        <h4>Conversation Is the Primary Technology</h4>
+                        <p>Change happens through dialogue: 1:1s, feedback loops, agreements, conflict conversations, meaning-making sessions.</p>
+                    </div>
+                </div>
+
+                <div class="belief-card">
+                    <div class="belief-number">5</div>
+                    <div class="belief-content">
+                        <h4>Pattern Recognition Beats Prescription</h4>
+                        <p>We don't hand leaders scripts. We teach them to see the underlying patterns—stuck loops, unclear agreements, overfunctioning, missed expectations, invisible norms—and to do something about it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <h2>Why This Is Different from Everything Else You've Tried</h2>
+
+            <div class="diff-grid">
+                <div class="diff-card">
+                    <strong>Not a library of templates.</strong>
+                    <p>This is a living, evolving resource tied to your real challenges—not generic downloads.</p>
+                </div>
+                <div class="diff-card">
+                    <strong>Not a pep talk.</strong>
+                    <p>We aren't selling slogans; we're supporting structural change: clarity, boundaries, relational health, real work.</p>
+                </div>
+                <div class="diff-card">
+                    <strong>Not a course you buy and forget.</strong>
+                    <p>We provide rhythm: monthly calls, quarterly check-ins, community accountability, real-world application.</p>
+                </div>
+                <div class="diff-card">
+                    <strong>Everything in one place.</strong>
+                    <p>Tools, community, coaching, and resources—no messy tech stack or fragmented workflows.</p>
+                </div>
+                <div class="diff-card">
+                    <strong>Flexible access for every size of leader or team.</strong>
+                    <p>Whether you run solo or lead a 12-person nonprofit: there's a plan for you without overcommitting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-cool">
+        <div class="container">
+            <h2>When You Join the Guild, Here's What Shifts</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Within the first month:</h4>
+                    <p>You have a clearer language for what's actually happening in your organization. You stop blaming yourself (or others) and start seeing the patterns.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Within three months:</h4>
+                    <p>You've implemented 2-3 new structures that reduce friction. Maybe it's a standing 1:1 rhythm. Maybe it's a decision-making framework. Maybe it's clearer role definitions. Your team feels it—and so do you.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Within six months:</h4>
+                    <p>Conflict that used to derail your week now gets addressed in real time. People bring you context and solutions, not just complaints. You're spending less time firefighting and more time on the work that matters.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Within a year:</h4>
+                    <p>You have a team of leaders, not just a team of workers. They take initiative. They hold each other accountable. They give you honest feedback. The culture isn't fragile anymore—it's resilient. And you? You're finally leading the organization you envisioned instead of just managing it.</p>
+                </div>
+            </div>
+
+            <div class="callout-secondary">
+                This isn't fantasy. This is what happens when human systems work is done well, with consistency and support.
+            </div>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <div class="offer-header">
+                <h2>Introducing: The Human Systems Guild</h2>
+                <p class="tagline">A membership community for everyday leaders building thriving, human-centered organizations.</p>
+            </div>
+
+            <h3 style="margin-bottom: 2rem;">What You Get</h3>
+
+            <div class="features-list">
+                <div class="feature-card">
+                    <strong>A curated, growing library of tools, scripts, and frameworks</strong>
+                    <p>for leadership, culture, and team building—practical resources you can implement immediately</p>
+                </div>
+                <div class="feature-card">
+                    <strong>A supportive community of like-minded leaders</strong>
+                    <p>working to build healthy organizations—because you shouldn't have to figure this out alone</p>
+                </div>
+                <div class="feature-card">
+                    <strong>Monthly live group coaching calls</strong>
+                    <p>(for Grow & Lead members) where you can get real-time guidance on your specific challenges</p>
+                </div>
+                <div class="feature-card">
+                    <strong>Quarterly small-group cohort sessions</strong>
+                    <p>(for Lead members) for deeper work with a consistent peer group</p>
+                </div>
+                <div class="feature-card">
+                    <strong>Explicit guides and rhythms for real-world implementation</strong>
+                    <p>—not theory, but practice</p>
+                </div>
+                <div class="feature-card">
+                    <strong>Optional organizational (team) access</strong>
+                    <p>if you want your whole team learning and growing together</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-warm">
+        <div class="container">
+            <div class="founding-offer">
+                <h3>Special Founding Member Offer</h3>
+                <p>We're opening the doors to a small group of Founding Members who will join us at special introductory rates and help shape this community from the ground up.</p>
+                
+                <p style="margin-top: 2rem; font-weight: 700;">As a Founding Member, you receive:</p>
+                
+                <ul class="founding-benefits">
+                    <li>Locked-in pricing for life (your rate will never increase)</li>
+                    <li>Early access to our resource library as we build it out</li>
+                    <li>Influence over future content (your needs shape what we build)</li>
+                    <li>Priority for hot-seats in monthly coaching calls</li>
+                    <li>Private "Founders Circle" discussion space</li>
+                    <li>A direct relationship with us as we co-create this community</li>
+                </ul>
+            </div>
+
+            <h2 style="margin-top: 5rem; margin-bottom: 3rem;">Membership Tiers & Pricing</h2>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h4>Seed Tier</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Library + Community</p>
+                    <div class="price-wrap">
+                        <span class="regular-price">$79/month</span>
+                        <span class="founding-price">$59/month</span>
+                    </div>
+                    <p class="description">Full access to resource library, community forum, call-recordings archive, monthly "field note." Asynchronous support only.</p>
+                </div>
+
+                <div class="pricing-card">
+                    <h4>Grow Tier</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Coaching + Implementation</p>
+                    <div class="price-wrap">
+                        <span class="regular-price">$169/month</span>
+                        <span class="founding-price">$119/month</span>
+                    </div>
+                    <p class="description">Everything in Seed + monthly live group coaching, monthly implementation prompts, prioritized Q&A in forum.</p>
+                </div>
+
+                <div class="pricing-card">
+                    <h4>Lead Tier</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Leadership Circle</p>
+                    <div class="price-wrap">
+                        <span class="regular-price">$349/month or $2,400/year</span>
+                        <span class="founding-price">$229/month or $1,999/year</span>
+                    </div>
+                    <p class="description">Everything in Grow + quarterly small-group cohort calls (max 12 people), priority support during calls, optional discounts on private coaching.</p>
+                </div>
+
+                <div class="pricing-card">
+                    <h4>Team Add-On</h4>
+                    <p style="color: var(--text-light); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Organizational Access</p>
+                    <div class="price-wrap">
+                        <span class="regular-price">$39/person/month</span>
+                        <span class="founding-price">$29/person/month</span>
+                    </div>
+                    <p class="description">Add team members to any tier so your whole organization can learn and grow together.</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: var(--text-light); font-size: 0.95rem; margin-top: 3rem;">*Prices shown in USD; convert to local currency as needed at checkout.</p>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <h2>Your Investment—Real Return</h2>
+
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">For less than the cost of a monthly dinner out, you get:</p>
+
+            <ul style="margin: 2rem 0 2rem 2rem; font-size: 1.05rem;">
+                <li style="margin-bottom: 0.75rem;">Structure for your team</li>
+                <li style="margin-bottom: 0.75rem;">Clarity for your leadership</li>
+                <li style="margin-bottom: 0.75rem;">Tools for conflict, growth, and collaboration</li>
+                <li style="margin-bottom: 0.75rem;">Ongoing support—not a half-finished course</li>
+            </ul>
+
+            <div class="callout-secondary">
+                If your alternative is months of friction, turnover, burnout, or heartbreak—this is a small investment for a big, real difference.
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>You Don't Have to Keep Carrying This Alone</h2>
+
+            <p class="quote">Margaret Mead once said: "Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has."</p>
+
+            <p>You're already leading that small group. You just haven't been given the tools to unleash their brilliance on the world.</p>
+
+            <p style="margin-top: 2rem;">The Human Systems Guild gives you those tools—and the support to use them well.</p>
+
+            <p style="font-weight: 700; font-size: 1.4rem; margin-top: 2.5rem;">Join us. Build something better. Together.</p>
+
+            <a href="#" class="cta-button">Coming 2026</a>
+        </div>
+    </section>
+
+    <section class="section-bordered">
+        <div class="container">
+            <div class="guarantee-box">
+                <h3>Risk-Free Guarantee</h3>
+                <p>Not sure if this is right for you? No problem. Cancel anytime—no questions asked, no hard feelings. We only want members who are getting real value from the community.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
